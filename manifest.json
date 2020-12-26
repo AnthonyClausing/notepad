@@ -1,14 +1,14 @@
 {
-  "name": "Notepad",
+  "name": "WorkDesk",
   "version": "1.0",
-  "description": "Note taking chrome extension",
+  "description": "Collection of workflow features in a chrome extension using React and typescript",
   "permissions": ["storage"],
   "background": {
     "scripts": ["background.js"],
     "persistent": false
   },
   "browser_action": {
-    "default_popup": "popup.html"
+    "default_popup": "public/index.html"
   },
   "manifest_version": 2
 }
