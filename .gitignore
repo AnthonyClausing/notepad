@@ -9,7 +9,8 @@ node_modules
 
 # production
 /build
-public
+public/favicon.ico
+public/index.html
 
 # misc
 .DS_Store
