@@ -1,0 +1,11 @@
+{
+  "name": "WorkDesk",
+  "version": "1.0",
+  "description": "Collection of workflow features in a chrome extension using React and typescript",
+  "permissions": ["storage"],
+  "browser_action": {
+    "default_popup": "index.html"
+  },
+  "content_security_policy": "script-src 'self'  'sha256-6VdS6MiDRSdia6QJjculb+UUdzpkj6tl176ltswq75A='; object-src 'self'",
+  "manifest_version": 2
+}

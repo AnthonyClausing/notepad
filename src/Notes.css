@@ -1,0 +1,8 @@
+.notes {
+  background-image: linear-gradient(90deg, #d0a090 1px, #d0a090 1px), linear-gradient(#fdf8c8, #fdf8c8 23px, #ccd 23px, #ccd 24px, #fdf8c8 24px);
+  background-size: 2px 100%, 100% 31px;
+  background-position: 30px top, left 0px;
+  background-repeat: no-repeat, repeat;
+  line-height: 30px !important;
+  background-attachment: local;
+}
