@@ -1,11 +1,13 @@
 import React from 'react';
 import './App.css';
-import Notes from  './Notes';
+// import Notes from  './Notes';
+import Calculator from './Calculator';
 
 function App() {
   return (
     <div className="App">
-      <Notes></Notes>
+      {/* <Notes></Notes> */}
+      <Calculator></Calculator>
     </div>
   );
 }
