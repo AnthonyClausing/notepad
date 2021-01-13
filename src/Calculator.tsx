@@ -1,4 +1,3 @@
-
 import { number } from 'prop-types';
 import React from 'react';
 import './Calculator.css';
