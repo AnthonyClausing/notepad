@@ -1,0 +1,46 @@
+#calendar {
+  height: 15rem;
+  width: 22rem;
+  display: grid;
+  grid-template-rows: 0.8fr repeat(5,1fr);
+}
+.header {
+  display: grid;
+  color: #fff8f0;
+  font-weight: 700;
+  /* CHOICE OF OTHER COLORS  = bg rules separated by className  */
+  grid-template-columns: 1fr 5fr 1fr;
+}
+.header.blue {
+  background: #13acd2;
+  background: -webkit-linear-gradient(0deg, #13acd2, #93c8d6);
+  background: linear-gradient(0deg, #13acd2, #93c8d6);
+}
+.header.green {
+  background: #17b861;
+  background: -webkit-linear-gradient(0deg,#87c886,#17b861);
+  background: linear-gradient(0deg,#87c886,#17b861);
+}
+.header.red{
+  background: #f85032;
+  background: -webkit-linear-gradient(0deg, #e73827, #f85032);
+  background: linear-gradient(0deg, #e73827, #f85032);
+}
+.chevrons {
+  cursor: pointer;
+}
+.week {
+  display: grid;
+  grid-template-columns: repeat(7,1fr);
+}
+.week > div:nth-child(n){
+  border: 1px black solid;
+}
+.day:hover {
+  background: #98beff70;
+  cursor:pointer;
+}
+.day > div {
+  text-align: left;
+  padding-left: 2px;
+}
