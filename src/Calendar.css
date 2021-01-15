@@ -2,7 +2,11 @@
   height: 15rem;
   width: 22rem;
   display: grid;
-  grid-template-rows: 0.8fr repeat(5,1fr);
+  grid-template-rows: 0.8fr 0.4fr repeat(5,1fr);
+}
+#calendar.long-month{
+  height: 17.5rem;
+  grid-template-rows: 0.8fr 0.4fr repeat(6,1fr);
 }
 .header {
   display: grid;
@@ -29,12 +33,18 @@
 .chevrons {
   cursor: pointer;
 }
-.week {
+.days-of-week {
+  font-size: 15px;
+}
+.week, .days-of-week {
   display: grid;
   grid-template-columns: repeat(7,1fr);
 }
 .week > div:nth-child(n){
   border: 1px black solid;
+}
+.day.gray {
+  background-color: #f0ececd8;
 }
 .day:hover {
   background: #98beff70;
