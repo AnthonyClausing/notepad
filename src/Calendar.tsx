@@ -61,7 +61,7 @@ class Calendar extends  React.Component<props,state> {
     })
   }
   setSelectedDay(day: number | undefined) {
-    day && this.setState({selectedDay: day})
+    day && day !== this.state.selectedDay && this.setState({selectedDay: day})
   }
 
   render(){
