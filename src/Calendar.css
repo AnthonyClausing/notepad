@@ -43,6 +43,9 @@
 .week > div:nth-child(n){
   border: 1px black solid;
 }
+.day.selected{
+  background: #98beff70;
+}
 .day.gray {
   background-color: #f0ececd8;
 }

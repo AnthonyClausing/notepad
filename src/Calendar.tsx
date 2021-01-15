@@ -6,10 +6,10 @@ import "./Calendar.css";
 //TODO:
 // colors property connected to settings   
 type props = {}
-type state = {selectedDay: string, selectedMonth: number, selectedYear: number, weeks: Array<Array<undefined | number>> }
+type state = {selectedDay: number, selectedMonth: number, selectedYear: number, weeks: Array<Array<undefined | number>> }
 
 class Calendar extends  React.Component<props,state> {
-  state: state = {selectedDay: "", selectedMonth: 0, selectedYear: 2020, weeks: []}
+  state: state = {selectedDay: 1, selectedMonth: 0, selectedYear: 2020, weeks: []}
   dow : string[] = ["Sunday", "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
   months : string[] = ["January","February","March","April","May", "June", "July","August","September","October","November","December"]
   //change selectedDay if selectedDay > 28 check various stuff
@@ -17,7 +17,7 @@ class Calendar extends  React.Component<props,state> {
   componentDidMount(){
     let today = startOfToday()
     let [month,day,year] = format(today,"L d yyyy").split(" ")
-    this.setState({selectedMonth: +month - 1, selectedDay: day, selectedYear: +year })
+    this.setState({selectedMonth: +month - 1, selectedDay: +day, selectedYear: +year })
     this.populateWeeks(+year, +month - 1)
   }
   componentWillUpdate(_nextProps : props, nextState : state) {
@@ -60,6 +60,9 @@ class Calendar extends  React.Component<props,state> {
       selectedYear: this.state.selectedMonth === 0 ? this.state.selectedYear - 1 : this.state.selectedYear
     })
   }
+  setSelectedDay(day: number | undefined) {
+    day && this.setState({selectedDay: day})
+  }
 
   render(){
     const calendarClass: string = this.state.weeks.length === 6 ? "long" : ""
@@ -87,7 +90,10 @@ class Calendar extends  React.Component<props,state> {
                 {
                   days.map((day, idx) => {
                     return (
-                      <div className={`day ${idx} ${!day? "gray" : ""}`}>
+                      <div 
+                        className={`day ${idx} ${!day? "gray" : ""} ${day && day === this.state.selectedDay ? "selected" : ""}`} 
+                        onClick={() => this.setSelectedDay(day)}
+                      >
                         <div>{day ? day : ""}</div>
                       </div>
                     )
