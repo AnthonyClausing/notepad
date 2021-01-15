@@ -8,8 +8,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 html {
-  height: 12.5rem;
-  width: 15rem;
+  /* height: 12.5rem;
+  width: 15rem; calculator*/ 
+  height: 15rem;
+  width: 22rem;
   margin: 0;
   /* padding: 0px 0px 20px 0px; */
 }
