@@ -46,7 +46,7 @@
 .day.gray {
   background-color: #f0ececd8;
 }
-.day:hover {
+.day:not(.gray):hover {
   background: #98beff70;
   cursor:pointer;
 }

@@ -5,26 +5,24 @@ import "./Calendar.css";
 
 //TODO:
 // colors property connected to settings   
-// additional logic for nav to next year
 type props = {}
-type state = {selectedMonth: string, selectedDay: string, selectedYear: string, weeks: Array<Array<undefined | number>> }
+type state = {selectedDay: string, selectedMonth: number, selectedYear: number, weeks: Array<Array<undefined | number>> }
 
 class Calendar extends  React.Component<props,state> {
-  state: state = {selectedMonth: "", selectedDay: "", selectedYear: "", weeks: []}
+  state: state = {selectedDay: "", selectedMonth: 0, selectedYear: 2020, weeks: []}
   dow : string[] = ["Sunday", "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
   months : string[] = ["January","February","March","April","May", "June", "July","August","September","October","November","December"]
-  
+  //change selectedDay if selectedDay > 28 check various stuff
+  //OR on change of these states change selectedDay to 1
   componentDidMount(){
-    // #calendar height: 17.5rem; grid-template-rows: .8fr .4fr repeat(6,1fr);////when 6 week month
     let today = startOfToday()
-    let [month,day,year] = format(today,"MMMM d yyyy").split(" ")
-    this.setState({selectedMonth: month, selectedDay: day, selectedYear: year })
+    let [month,day,year] = format(today,"L d yyyy").split(" ")
+    this.setState({selectedMonth: +month - 1, selectedDay: day, selectedYear: +year })
+    this.populateWeeks(+year, +month - 1)
   }
   componentWillUpdate(_nextProps : props, nextState : state) {
     if(nextState.selectedYear !== this.state.selectedYear || nextState.selectedMonth !== this.state.selectedMonth){
-      //change selectedDay if selectedDay > 28 check various stuff
-      //OR on change of these states change selectedDay to 1
-      this.populateWeeks(+nextState.selectedYear, this.months.indexOf(nextState.selectedMonth))
+      this.populateWeeks(nextState.selectedYear, nextState.selectedMonth)
     }
   }
 
@@ -33,7 +31,7 @@ class Calendar extends  React.Component<props,state> {
     let daysInMonth = getDaysInMonth(date)
     let idxToAdd = date.getDay()
     let weeksArray : Array<Array<any>> = []
-    let dowArray : Array<any> = []
+    let dowArray : Array<undefined | number> = []
     for(let i = 1; i <= daysInMonth;i++){
       dowArray[idxToAdd] = i
       if(i === daysInMonth) { weeksArray.push([...dowArray]) }
@@ -51,22 +49,16 @@ class Calendar extends  React.Component<props,state> {
     this.setState({weeks: weeksArray})
   }
   increment() {
-    //by month
-    let idx: number = this.months.indexOf(this.state.selectedMonth)
-    if(idx === 11) {
-      this.setState({selectedMonth: this.months[0]})
-    }else {
-      this.setState({selectedMonth: this.months[idx + 1]})
-    }
+    this.setState({
+      selectedMonth: this.state.selectedMonth < 11 ? this.state.selectedMonth + 1 : 0, 
+      selectedYear: this.state.selectedMonth < 11 ? this.state.selectedYear : this.state.selectedYear + 1 
+    })
   }
   decrement() {
-    //by month
-    let idx: number = this.months.indexOf(this.state.selectedMonth)
-    if(idx === 0) {
-      this.setState({selectedMonth: this.months[11]})
-    }else {
-      this.setState({selectedMonth: this.months[idx - 1]})
-    }
+    this.setState({
+      selectedMonth: this.state.selectedMonth === 0 ? 11 : this.state.selectedMonth - 1, 
+      selectedYear: this.state.selectedMonth === 0 ? this.state.selectedYear - 1 : this.state.selectedYear
+    })
   }
 
   render(){
@@ -78,7 +70,7 @@ class Calendar extends  React.Component<props,state> {
         <div className="header red">
           <div className="chevrons" onClick={() => this.decrement()}>|----</div>
           <div>
-            <div>{this.state.selectedMonth}</div>
+            <div>{this.months[this.state.selectedMonth]}</div>
             <div>{this.state.selectedYear}</div>
           </div>
           <div className="chevrons" onClick={() => this.increment()}>----|</div>
