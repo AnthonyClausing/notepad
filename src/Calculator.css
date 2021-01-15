@@ -1,6 +1,7 @@
 #calculator {
+  height: 12.5rem;
+  width: 15rem;  
   background-color: #f7eacd;
-  height: 100%;
   color: rgb(253, 247, 247);
 }
 #result {

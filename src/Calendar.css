@@ -12,6 +12,7 @@
   display: grid;
   color: #fff8f0;
   font-weight: 700;
+  text-align: center;
   /* CHOICE OF OTHER COLORS  = bg rules separated by className  */
   grid-template-columns: 1fr 5fr 1fr;
 }

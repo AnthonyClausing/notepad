@@ -21,7 +21,6 @@ class Calculator extends  React.Component<props,state> {
   setOperand(digit: string) {
     let isDecimal :boolean = digit === '.'
     let isZero :boolean = digit === '0'
-    console.log('digit: ', digit, 'state: ', this.state)
     if(!this.state.currentOperand && this.state.displayNumber){
       if(!isDecimal){
         this.setState({previousOperand: this.state.displayNumber, currentOperand: digit, displayNumber: digit})
@@ -50,7 +49,6 @@ class Calculator extends  React.Component<props,state> {
     } else if(operation) {
       // if(this.state.currentOperation){ this[operation].call() }
     }
-    console.log(evt, 'at key input')
   }  
   setOperation(operation:string) {
     if(!this.state.currentOperation){
@@ -59,7 +57,6 @@ class Calculator extends  React.Component<props,state> {
     if(this.state.previousOperand && this.state.currentOperand && this.state.currentOperation !== operation) {
       this.resolve()
     }
-    console.log('setting operation')
     this.setState({currentOperation: operation })
   }
   multiply(){
@@ -75,7 +72,6 @@ class Calculator extends  React.Component<props,state> {
     this.setOperation('add')
   }
   resolve(){
-    console.log('resolve')
     let solution : number;
     let prev: number = Number(this.state.previousOperand)
     let curr: number = Number(this.state.currentOperand)
@@ -101,15 +97,12 @@ class Calculator extends  React.Component<props,state> {
     }
   }
   squareRoot() {
-    console.log('square ROOT')
     this.setOperand(`${Math.sqrt(+this.state.currentOperand)}`)
   }
   clear() {
-    console.log('clear')
     this.setState({currentOperand: '', previousOperand: '', currentOperation: '', displayNumber: ''})
   }
   checkWindow() {
-    console.log(window)
     return ''
   }
 
