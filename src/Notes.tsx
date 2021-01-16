@@ -22,7 +22,7 @@ class Notes extends React.Component<props,state> {
 
   render(){
     return (
-      <textarea className="notes" onChange={this.saveNotes} value={this.state.text}></textarea>
+      <textarea id="notes" onChange={this.saveNotes} value={this.state.text}></textarea>
     );
   }
   

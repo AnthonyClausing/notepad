@@ -1,3 +1,18 @@
 .App {
-  text-align: center;
+  max-height: 17.5rem;
+  max-width: 25rem;
+  transition: width 0.7s linear;
+  transition: height 0.7s linear;
+}
+.inline > div {
+  background-color: white;
+  display: flex;
+  position: absolute;
+  bottom: 0px;
+  border-top-right-radius: 25px;
+}
+.inline > div > div:nth-child(n) {
+  border-right: 1px solid grey;
+  padding: 10px;
+  border-top-right-radius: 30px;
 }
