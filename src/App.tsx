@@ -2,8 +2,7 @@ import React from 'react';
 import './App.css';
 import Notes from  './Notes';
 import Calculator from './Calculator';
-import Calendar from './Calendar'
-import { types } from 'util';
+import Calendar from './Calendar';
 
 type props = {}
 type state = {selectedFeature: number}
@@ -11,7 +10,7 @@ type state = {selectedFeature: number}
 class App extends  React.Component<props,state> {
   state: state = {selectedFeature: 0}
   render(){
-    const features = ["Notes", "Calculator", "Calendar"]
+    const features = ["notes", "calculator", "calendar"]
     return (
       <div className="App">
         {
@@ -25,7 +24,15 @@ class App extends  React.Component<props,state> {
         }
         <div className="inline">
           <div>
-          {features.map((f, idx) => (<div onClick={() => this.setState({selectedFeature: idx })}>{f}</div>))}
+          {
+            features.map((f, idx) => {
+              return (
+                <div onClick={() => this.setState({selectedFeature: idx })}>
+                  <img className="icons" src={`./images/${f}.svg`} alt={f}/>
+                </div>
+              )
+            })
+          }
           </div>
         </div>
       </div>

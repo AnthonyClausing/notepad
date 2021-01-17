@@ -1,4 +1,3 @@
-import { number } from "prop-types";
 import { startOfToday, getDaysInMonth, toDate, format } from "date-fns";
 import React from "react";
 import "./Calendar.css";
@@ -20,12 +19,11 @@ class Calendar extends  React.Component<props,state> {
     this.setState({selectedMonth: +month - 1, selectedDay: +day, selectedYear: +year })
     this.populateWeeks(+year, +month - 1)
   }
-  componentWillUpdate(_nextProps : props, nextState : state) {
-    if(nextState.selectedYear !== this.state.selectedYear || nextState.selectedMonth !== this.state.selectedMonth){
-      this.populateWeeks(nextState.selectedYear, nextState.selectedMonth)
+  getSnapshotBeforeUpdate(_prevProps: props, prevState: state) {
+    if(prevState.selectedYear !== this.state.selectedYear || prevState.selectedMonth !== this.state.selectedMonth){
+      this.populateWeeks(this.state.selectedYear, this.state.selectedMonth)
     }
   }
-
   populateWeeks(year: number, month: number) {
     let date = toDate(new Date(year, month, 1))
     let daysInMonth = getDaysInMonth(date)
@@ -71,12 +69,16 @@ class Calendar extends  React.Component<props,state> {
       <div id="calendar" className={calendarClass}>
         {/* "invisible[^overflow-y: hidden???]" sliding down "modal" onClick day element */}
         <div className="header red">
-          <div className="chevrons" onClick={() => this.decrement()}>|----</div>
+          <div className="chevrons" onClick={() => this.decrement()}>
+            <img src="./images/left_arrow.svg" alt="<"/>
+          </div>
           <div>
             <div>{this.months[this.state.selectedMonth]}</div>
             <div>{this.state.selectedYear}</div>
           </div>
-          <div className="chevrons" onClick={() => this.increment()}>----|</div>
+          <div className="chevrons" onClick={() => this.increment()}>
+            <img src="./images/right_arrow.svg" alt=">"/>
+          </div>
         </div>
         <div className="days-of-week">
           {this.dow.map(d => {

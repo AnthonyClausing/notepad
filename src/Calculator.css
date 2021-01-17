@@ -1,5 +1,4 @@
 #calculator {
-  height: 12.5rem;
   width: 15rem;  
   background-color: #f7eacd;
   color: rgb(253, 247, 247);
@@ -29,6 +28,7 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  text-align: center;
 }
 #basic-operators > div:nth-child(1){
   font-size: 1.5rem;
