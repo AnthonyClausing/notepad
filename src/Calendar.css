@@ -4,7 +4,7 @@
   display: grid;
   grid-template-rows: 0.8fr 0.4fr repeat(5,1fr);
 }
-#calendar.long-month{
+#calendar.long{
   height: 17.5rem;
   grid-template-rows: 0.8fr 0.4fr repeat(6,1fr);
 }
@@ -36,6 +36,7 @@
 }
 .days-of-week {
   font-size: 15px;
+  text-align: center;
 }
 .week, .days-of-week {
   display: grid;
